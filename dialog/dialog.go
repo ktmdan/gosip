@@ -103,6 +103,8 @@ func NewDialog(invite *sip.Msg) (dl *Dialog, err error) {
 
 func (dls *dialogState) run() {
 	defer dls.cleanup()
+	defer log.Printf("RUN exited")
+	log.Printf("RUN start")
 	if !dls.sendRequest(dls.invite) {
 		return
 	}
@@ -118,12 +120,14 @@ func (dls *dialogState) run() {
 				}
 			} else {
 				dls.errChan <- err
+				log.Printf("RUN exit errchan")
 				return
 			}
 		case err := <-dls.csockErrs:
 			dls.csock.Close()
 			dls.csock = nil
 			dls.errChan <- err
+			log.Printf("RUN exit socketerror")
 			return
 		case <-dls.requestTimer:
 			if !dls.resendRequest() {
@@ -143,6 +147,7 @@ func (dls *dialogState) run() {
 			}
 		case <-dls.sendHangupChan:
 			if !dls.sendHangup() {
+				log.Printf("RUN exit sendhangup")
 				return
 			}
 		}
@@ -491,20 +496,24 @@ func (dls *dialogState) transition(state int) {
 }
 
 func (dls *dialogState) cleanup() {
+	log.Printf("cleanup")
 	dls.cleanupSock()
 	dls.cleanupCSock()
 	close(dls.errChan)
 	close(dls.stateChan)
 	close(dls.peerChan)
+	log.Printf("cleanup complete")
 }
 
 func (dls *dialogState) cleanupSock() {
+	log.Printf("cleanupsock")
 	if dls.sock != nil {
 		dls.sock.Close()
 		dls.sock = nil
-		<-dls.sockMsgs
+		// <-dls.sockMsgs
 		<-dls.sockErrs
 	}
+	log.Printf("cleanupsock complete")
 }
 
 func (dls *dialogState) cleanupCSock() {
