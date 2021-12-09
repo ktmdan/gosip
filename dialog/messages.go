@@ -17,8 +17,8 @@ package dialog
 import (
 	"log"
 
-	"github.com/jart/gosip/sip"
-	"github.com/jart/gosip/util"
+	"github.com/ktmdan/gosip/sip"
+	"github.com/ktmdan/gosip/util"
 )
 
 const (

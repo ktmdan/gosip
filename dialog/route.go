@@ -20,8 +20,8 @@ import (
 	"net"
 	"strconv"
 
-	"github.com/jart/gosip/sip"
-	"github.com/jart/gosip/util"
+	"github.com/ktmdan/gosip/sip"
+	"github.com/ktmdan/gosip/util"
 )
 
 type AddressRoute struct {

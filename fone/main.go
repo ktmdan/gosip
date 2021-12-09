@@ -34,12 +34,12 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/jart/gosip/dialog"
-	"github.com/jart/gosip/dsp"
-	"github.com/jart/gosip/rtp"
-	"github.com/jart/gosip/sdp"
-	"github.com/jart/gosip/sip"
-	"github.com/jart/gosip/util"
+	"github.com/ktmdan/gosip/dialog"
+	"github.com/ktmdan/gosip/dsp"
+	"github.com/ktmdan/gosip/rtp"
+	"github.com/ktmdan/gosip/sdp"
+	"github.com/ktmdan/gosip/sip"
+	"github.com/ktmdan/gosip/util"
 )
 
 const (
@@ -52,7 +52,11 @@ const (
 )
 
 var (
-	addressFlag  = flag.String("address", "", "Public IP (or hostname) of the local machine. Defaults to asking an untrusted webserver.")
+	addressFlag  = flag.String(
+		"address",
+		"",
+		"Public IP (or hostname) of the local machine. Defaults to asking an untrusted webserver.",
+	)
 	paServerFlag = flag.String("paServer", "", "PulseAudio server name")
 	paSinkFlag   = flag.String("paSink", "", "PulseAudio device or sink name")
 	muteFlag     = flag.Bool("mute", false, "Send comfort noise rather than microphone input")

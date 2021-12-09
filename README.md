@@ -1,3 +1,5 @@
+# This is not my repository this is a fork.
+## This is meant for a specific use case where I was getting threads sticking around because of a hanging channel receive
 # gosip
 
 Version: 0.1  

@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/jart/gosip/sdp"
+	"github.com/ktmdan/gosip/sdp"
 )
 
 type sdpTest struct {
@@ -393,8 +393,10 @@ func TestParse(t *testing.T) {
 			t.Error(test.name, "Addr", test.sdp.Addr, "!=", sdp.Addr)
 		}
 		if test.sdp.Origin.User != sdp.Origin.User {
-			t.Error(test.name, "Origin.User", test.sdp.Origin.User, "!=",
-				sdp.Origin.User)
+			t.Error(
+				test.name, "Origin.User", test.sdp.Origin.User, "!=",
+				sdp.Origin.User,
+			)
 		}
 		if test.sdp.Origin.ID != sdp.Origin.ID {
 			t.Error(test.name, "Origin.ID doesn't match")

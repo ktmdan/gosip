@@ -74,7 +74,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jart/gosip/util"
+	"github.com/ktmdan/gosip/util"
 )
 
 const (
@@ -397,8 +397,10 @@ func populateCodecs(media *Media, pts []uint8, rtpmaps, fmtps []string) (err err
 				if v, ok := StandardCodecs[pt]; ok {
 					*codec = v
 				} else {
-					return errors.New("unknown iana codec id: " +
-						strconv.Itoa(int(pt)))
+					return errors.New(
+						"unknown iana codec id: " +
+							strconv.Itoa(int(pt)),
+					)
 				}
 			}
 		}
