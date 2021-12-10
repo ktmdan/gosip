@@ -299,7 +299,7 @@ func (dls *dialogState) handleMessage(msg *sip.Msg) bool {
 
 func (dls *dialogState) handleResponse(msg *sip.Msg) bool {
 	if !ResponseMatch(dls.request, msg) {
-		log.Printf("Received response doesn't match transaction\r\n")
+		// log.Printf("Received response doesn't match transaction\r\n")
 		return true
 	}
 	if msg.Status >= sip.StatusOK && dls.request.Method == sip.MethodInvite {
